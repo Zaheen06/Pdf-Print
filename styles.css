@@ -1,0 +1,166 @@
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #00bcd4, #4caf50);
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    /* Company Name Styles */
+    .company-name {
+        font-size: 1.8rem; 
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    /* Form Styles */
+    .form-container {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin: 10px;
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container button,
+    .form-container label {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-container input:focus,
+    .form-container select:focus {
+        border-color: #4caf50;
+        outline: none;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    }
+
+    /* Button Styles */
+    button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 14px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Response Message Styles */
+    #response {
+        margin-top: 20px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #response a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #4caf50;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    #response a:hover {
+        text-decoration: underline;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        .form-container {
+            padding: 30px 20px;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        button {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        .form-container {
+            padding: 20px 15px;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        button {
+            font-size: 15px;
+            padding: 12px;
+        }
+    }
+    .alert-slider {
+        position: fixed;
+        top: -100px; /* Initially hidden */
+        left: 0;
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        font-size: 18px;
+        padding: 20px;
+        transition: top 0.5s ease;
+        z-index: 1000;
+    }
+
+    .alert-slider.show {
+        top: 0; /* Slide in */
+    }
+
+    .alert-slider .close-btn {
+        color: white;
+        font-size: 24px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+    }
