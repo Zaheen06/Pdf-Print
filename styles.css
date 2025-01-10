@@ -75,26 +75,29 @@ input[type="file"] {
 }
 
 /* Button Styles */
+/* Button Styles */
 button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
+    width: 100%;
     padding: 14px;
+    margin-bottom: 15px;
+    font-size: 16px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid #ddd;
+    background-color: #4caf50;  /* Set default background color */
+    color: white; /* Text color */
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #4caf50; /* Keep the same color when hovered */
     transform: translateY(-3px); /* Small lift effect on hover */
 }
 
 button:active {
     transform: translateY(1px); /* Slight press effect */
 }
+
+
 
 /* Response Message Styles */
 #response {
