@@ -51,7 +51,7 @@ body {
 /* Input Fields, Select Dropdowns, and Buttons */
 .form-container input,
 .form-container select,
-.form-container button {
+.form-container  {
     width: 100%;
     padding: 14px;
     margin-bottom: 15px;
@@ -75,7 +75,6 @@ input[type="file"] {
 }
 
 /* Button Styles */
-/* Button Styles */
 button {
     width: 100%;
     padding: 14px;
@@ -83,21 +82,18 @@ button {
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ddd;
-    background-color: #4caf50;  /* Set default background color */
-    color: white; /* Text color */
+     background-color: #4caf50;; 
     transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #4caf50; /* Keep the same color when hovered */
+    background-color: #45a049;
     transform: translateY(-3px); /* Small lift effect on hover */
 }
 
 button:active {
     transform: translateY(1px); /* Slight press effect */
 }
-
-
 
 /* Response Message Styles */
 #response {
