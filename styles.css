@@ -1,166 +1,225 @@
-      /* Global Styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #f9f9f9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #00bcd4, #4caf50);
-        padding: 20px;
-        flex-direction: column;
-    }
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1e90ff, #32cd32); /* Gradient background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+}
 
-    /* Company Name Styles */
+/* Company Name Styles */
+.company-name {
+    font-size: 2.2rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Container Styles */
+.form-container {
+    background: linear-gradient(135deg, #6aa8df, #00f2fe); /* Soft blue to cyan gradient */
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+
+
+
+.form-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields, Select Dropdowns, and Buttons */
+.form-container input,
+.form-container select,
+.form-container button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Button Styles */
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px); /* Small lift effect on hover */
+}
+
+button:active {
+    transform: translateY(1px); /* Slight press effect */
+}
+
+/* Response Message Styles */
+#response {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#response a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4caf50;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+#response a:hover {
+    text-decoration: underline;
+    color: #45a049;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
     .company-name {
-        font-size: 1.8rem; 
-        color: white;
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: 600;
-        text-transform: uppercase;
+        font-size: 1.9rem;
     }
 
-    /* Form Styles */
     .form-container {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 500px;
-        margin: 10px;
+        padding: 30px 20px;
     }
 
     .form-container input,
     .form-container select,
-    .form-container button,
-    .form-container label {
-        width: 100%;
-        margin-bottom: 20px;
+    .form-container button {
+        font-size: 15px;
         padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        transition: all 0.3s ease-in-out;
     }
 
-    .form-container input:focus,
-    .form-container select:focus {
-        border-color: #4caf50;
-        outline: none;
-        box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
-    }
-
-    /* Button Styles */
     button {
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 14px;
-        border-radius: 8px;
-        transition: background-color 0.3s ease;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 768px) {
+    .company-name {
+        font-size: 1.6rem;
     }
 
-    button:hover {
-        background-color: #45a049;
+    .form-container {
+        padding: 25px 15px;
     }
 
-    /* Response Message Styles */
-    #response {
-        margin-top: 20px;
-        font-size: 18px;
-        text-align: center;
+    .form-container input,
+    .form-container select,
+    .form-container button {
+        font-size: 14px;
+        padding: 10px;
     }
 
-    #response a {
-        display: inline-block;
-        margin-top: 10px;
-        color: #4caf50;
-        font-weight: bold;
-        text-decoration: none;
+    button {
         font-size: 16px;
     }
+}
 
-    #response a:hover {
-        text-decoration: underline;
+@media (max-width: 480px) {
+    .company-name {
+        font-size: 1.4rem;
     }
 
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 2rem;
-        }
-
-        .form-container {
-            padding: 30px 20px;
-        }
-
-        .form-container input,
-        .form-container select,
-        .form-container button {
-            font-size: 14px;
-            padding: 10px;
-        }
-
-        button {
-            font-size: 16px;
-        }
+    .form-container {
+        padding: 20px 10px;
     }
 
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 1.6rem;
-        }
-
-        .form-container {
-            padding: 20px 15px;
-        }
-
-        .form-container input,
-        .form-container select,
-        .form-container button {
-            font-size: 14px;
-            padding: 8px;
-        }
-
-        button {
-            font-size: 15px;
-            padding: 12px;
-        }
-    }
-    .alert-slider {
-        position: fixed;
-        top: -100px; /* Initially hidden */
-        left: 0;
-        width: 100%;
-        background-color: #4caf50;
-        color: white;
-        text-align: center;
-        font-size: 18px;
-        padding: 20px;
-        transition: top 0.5s ease;
-        z-index: 1000;
+    .form-container input,
+    .form-container select,
+    .form-container button {
+        font-size: 13px;
+        padding: 8px;
     }
 
-    .alert-slider.show {
-        top: 0; /* Slide in */
+    button {
+        font-size: 15px;
+        padding: 12px;
     }
+}
 
-    .alert-slider .close-btn {
-        color: white;
-        font-size: 24px;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        cursor: pointer;
-    }
+/* Alert Slider */
+.alert-slider {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    transition: top 0.5s ease;
+    z-index: 1000;
+}
+
+.alert-slider.show {
+    top: 0; /* Slide in */
+}
+
+.alert-slider .close-btn {
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Box Shadows */
+input, select, button {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+button:hover {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
