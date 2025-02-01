@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up / Login Form</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Print My PDF</title>
+      
 </head>
-
+<link rel="stylesheet" href="styles.css">
 <body>
-    <main>
-        <input type="checkbox" aria-hidden="false" name="" id="chk">
+    <!-- Company Name Header -->
+    <div class="company-name">
+        The Printing Company
+    </div>
 
-        <div class="signup">
-            <form action="https://api.web3forms.com/submit" method="POST" class="signupForm">
-                <input type="hidden" name="access_key" value="e6e4f284-91b1-42e9-8888-0f3adfb2ac3f">
-                <label for="chk">Sign up</label>
-                <input type="text" required placeholder="User name">
-                <input type="email" required placeholder="Email">
-                <input type="tel" required placeholder="Phone No.">
-                <input type="password" required placeholder="Password">
-                <button>Sign up</button>
-            </form>
-        </div>
-        <div class="login">
-            <form action="">
-                <label for="chk">Login</label>
-                <input type="email" required placeholder="Email">
-                <input type="password" required placeholder="Password">
-                <button>Login</button>
-            </form>
-        </div>
+    <div class="form-container">
+        <h1>Print My PDF</h1>
+        <form action="https://api.web3forms.com/submit" method="POST">
 
-    </main>
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="e6e4f284-91b1-42e9-8888-0f3adfb2ac3f">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="tel" name="contact" placeholder="Contact Number" required>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="time">Time Needed (HH:MM):</label>
+            <input type="time" name="time" required>
+            <input type="file" name="file" accept="application/pdf" required>
+            <select name="binding" required>
+                <option value="" disabled selected>Select Binding Option</option>
+                <option value="none">No Binding</option>
+                <option value="spiral">Spiral Binding</option>
+                <option value="hardcover">Hardcover Binding</option>
+            </select>
+            <button type="submit">Upload and Print</button>
+
+        </form>
+        <div id="response"></div>
+    </div>
+    <div id="alertSlider" class="alert-slider">
+        <span id="alertMessage">Your file is successfully uploaded!</span>
+        <span class="close-btn" onclick="closeAlert()">×</span>
+    </div>
+
+    <script src="script.js">
+    
+
+       
+    </script>
 </body>
-
 </html>
