@@ -3,54 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print My PDF</title>
-      
+    <title>THE PRINTING COMPANY</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="styles.css">
 <body>
-    <!-- Company Name Header -->
-    <div class="company-name">
-        The Printing Company
+
+    <!-- Dark/Light Mode Toggle -->
+    <div class="mode-switch">
+        <input type="checkbox" id="mode-toggle" class="mode-toggle">
+        <label for="mode-toggle" class="mode-label"></label>
     </div>
 
-    <div class="form-container">
-        <h1>Print My PDF</h1>
-        <form action="https://api.web3forms.com/submit" method="POST">
-
-            <!-- Replace with your Access Key -->
-            <input type="hidden" name="access_key" value="e6e4f284-91b1-42e9-8888-0f3adfb2ac3f">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="address" placeholder="Address" required>
-            <input type="tel" name="contact" placeholder="Contact Number" required>
-            <select name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-            <label for="time">Time Needed (HH:MM):</label>
-            <input type="time" name="time" required>
-            <input type="file" name="file" accept="application/pdf" required>
-            <select name="binding" required>
-                <option value="" disabled selected>Select Binding Option</option>
-                <option value="none">No Binding</option>
-                <option value="spiral">Spiral Binding</option>
-                <option value="hardcover">Hardcover Binding</option>
-            </select>
-            <button type="submit">Upload and Print</button>
-
-        </form>
-        <div id="response"></div>
-    </div>
-    <div id="alertSlider" class="alert-slider">
-        <span id="alertMessage">Your file is successfully uploaded!</span>
-        <span class="close-btn" onclick="closeAlert()">×</span>
+    <div class="landing-container">
+        <h1 class="company-name">THE PRINTING COMPANY</h1>
+        <button class="enter-btn" onclick="enterSite()">
+            <span class="icon">&#8594;</span> Enter
+        </button>
     </div>
 
-    <script src="script.js">
-    
+    <script>
+        // Dark/Light Mode Toggle Script
+        const toggle = document.getElementById('mode-toggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode', toggle.checked);
+        });
 
-       
+        function enterSite() {
+            window.location.href = "upload.html";
+        }
     </script>
+
 </body>
 </html>

@@ -1,36 +1,20 @@
-const form = document.getElementById('uploadForm');
-        const alertSlider = document.getElementById('alertSlider');
-        const alertMessage = document.getElementById('alertMessage');
+function countPages() {
+    const fileInput = document.getElementById("pdfFile");
+    const pageCountDisplay = document.getElementById("pageCount");
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
 
-            try {
-                const res = await fetch('upload.php', {
-                    method: 'POST',
-                    body: formData
-                });
+        reader.onload = function (e) {
+            const pdfData = new Uint8Array(e.target.result);
+            const pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-                const data = await res.json();
-                if (data.message) {
-                    alertMessage.innerHTML = data.message;
-                    showAlert();
-                } else {
-                    alertMessage.innerHTML = data.error;
-                    showAlert();
-                }
-            } catch (err) {
-                alertMessage.innerHTML = 'An unexpected error occurred.';
-                showAlert();
-            }
-        });
+            pdfjsLib.getDocument(pdfData).promise.then(function (pdf) {
+                pageCountDisplay.textContent = `Pages: ${pdf.numPages}`;
+            });
+        };
 
-        function showAlert() {
-            alertSlider.classList.add('show');
-            setTimeout(closeAlert, 5000); // Close after 5 seconds
-        }
-
-        function closeAlert() {
-            alertSlider.classList.remove('show');
-        }
+        reader.readAsArrayBuffer(file);
+    }
+}
