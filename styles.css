@@ -1,37 +1,256 @@
-/* Global Styles */
+/* ==================== CSS Variables ==================== */
+:root {
+    --primary-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --secondary-bg: rgba(50, 50, 50, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --accent-gradient: linear-gradient(135deg, #ff4b2b, #ff416c);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --focus-glow: rgba(0, 255, 255, 0.7);
+    --error-glow: rgba(255, 65, 108, 0.7);
+    --border-color: rgba(255, 255, 255, 0.3);
+    --transition-speed: 0.3s;
+    --border-radius: 15px;
+}
+
+/* ==================== Global Styles ==================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Body Styling */
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1e90ff, #32cd32); /* Gradient background */
-    color: #333;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
-    padding: 20px;
+    padding: 1rem;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Company Name Styles */
-.company-name {
-    font-size: 2.2rem;
-    color: white;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: bold;
-    letter-spacing: 3px;
+/* ==================== Dark/Light Mode ==================== */
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .company-name {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+body.dark-mode .enter-btn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* ==================== Mode Toggle Switch ==================== */
+.mode-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.mode-toggle {
+    display: none;
+}
+
+.mode-label {
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    background-color: #5c3030;
+    border-radius: 20px;
+    position: relative;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.mode-label:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.mode-toggle:checked + .mode-label {
+    background-color: #4caf50;
+}
+
+.mode-toggle:checked + .mode-label:before {
+    transform: translateX(20px);
+}
+
+/* ==================== Container Styling ==================== */
+.container {
+    background: var(--primary-bg);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    width: min(90%, 420px);
+    transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    z-index: 10;
+}
+
+/* ==================== Form Styling ==================== */
+form {
+    background: var(--secondary-bg);
+    padding: 2rem;
+    background-color: #42416e;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== Form Elements ==================== */
+.input-group {
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: calc(var(--border-radius) / 3);
+    font-size: 1rem;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+/* Input & Select Styling */
+input, select {
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    padding-right: 2.5rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Placeholder Styling */
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Fix: Focus & Validation States */
+input:focus, select:focus {
+    outline: 2px solid var(--focus-glow);
+    outline-offset: 2px;
+    box-shadow: 0 0 12px var(--focus-glow);
+    border-color: var(--focus-glow);
+}
+
+/* Fix: Ensure buttons are clickable */
+button {
+    background: var(--accent-gradient);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
     text-transform: uppercase;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease-in-out;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
 }
 
-/* Form Container Styles */
+/* Button Hover & Ripple Effect */
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    background: rgba(199, 86, 86, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform var(--transition-speed) ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    box-shadow: 0 5px 20px rgba(255, 75, 43, 0.4);
+    transform: scale(1.02);
+}
+
+button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Button Click Effect */
+button:active {
+    transform: scale(0.96);
+}
+
+/* ==================== Animations ==================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Floating Animation */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0px); }
+}
+
+button {
+    animation: floating 2s infinite ease-in-out;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .container,
+    .container::before,
+    button::after {
+        transition: none;
+    }
+}
+
+/* Form Container Styling */
 .form-container {
-    background: linear-gradient(135deg, #6aa8df, #00f2fe); /* Soft blue to cyan gradient */
+    background: var(--primary-bg);
     padding: 35px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -39,13 +258,6 @@ body {
     max-width: 600px;
     margin: 10px;
     transition: box-shadow 0.3s ease;
-}
-
-
-
-
-.form-container:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Input Fields, Select Dropdowns, and Buttons */
@@ -82,107 +294,20 @@ button {
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ddd;
-     background-color: #4caf50;; 
+    background-color: #4caf50; 
     transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
-    transform: translateY(-3px); /* Small lift effect on hover */
+    transform: translateY(-3px);
 }
 
 button:active {
-    transform: translateY(1px); /* Slight press effect */
+    transform: translateY(1px);
 }
 
-/* Response Message Styles */
-#response {
-    margin-top: 20px;
-    font-size: 18px;
-    text-align: center;
-}
-
-#response a {
-    display: inline-block;
-    margin-top: 10px;
-    color: #4caf50;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-#response a:hover {
-    text-decoration: underline;
-    color: #45a049;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 1024px) {
-    .company-name {
-        font-size: 1.9rem;
-    }
-
-    .form-container {
-        padding: 30px 20px;
-    }
-
-    .form-container input,
-    .form-container select,
-    .form-container button {
-        font-size: 15px;
-        padding: 12px;
-    }
-
-    button {
-        font-size: 17px;
-    }
-}
-
-@media (max-width: 768px) {
-    .company-name {
-        font-size: 1.6rem;
-    }
-
-    .form-container {
-        padding: 25px 15px;
-    }
-
-    .form-container input,
-    .form-container select,
-    .form-container button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    button {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .company-name {
-        font-size: 1.4rem;
-    }
-
-    .form-container {
-        padding: 20px 10px;
-    }
-
-    .form-container input,
-    .form-container select,
-    .form-container button {
-        font-size: 13px;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 15px;
-        padding: 12px;
-    }
-}
-
-/* Alert Slider */
+/* Success Alert Slider */
 .alert-slider {
     position: fixed;
     top: -100px;
@@ -198,7 +323,7 @@ button:active {
 }
 
 .alert-slider.show {
-    top: 0; /* Slide in */
+    top: 0;
 }
 
 .alert-slider .close-btn {
